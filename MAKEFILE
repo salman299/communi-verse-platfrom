@@ -1,0 +1,7 @@
+dev.pull:
+	chmod +x ./clone-repos.sh
+	./clone-repos.sh
+dev.build:
+	docker-compose build
+dev.up:
+	docker-compose up
