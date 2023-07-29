@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: react-communi-verse
+    build:
+      context: ./react-communi-verse
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./react-communi-verse:/usr/src/app/
+    depends_on:
+      - api
+  
+  api:
+    container_name: api-communi-verse
+    build: 
+      context: ./communi-verse
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./communi-verse:/usr/src/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - common.env
+      - backend.env
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=communi-verse
+      - POSTGRES_PASSWORD=communi-verse
+      - POSTGRES_DB=communi-verse
+
+volumes:
+  postgres_data:

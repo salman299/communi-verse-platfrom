@@ -1,0 +1,9 @@
+*.pyc
+__pycache
+.DS_Store
+.env.dev
+.env.prod
+.env.prod.db
+react-communi-verse/
+communi-verse/
+nginx/
