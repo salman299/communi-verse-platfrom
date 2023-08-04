@@ -9,7 +9,9 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./react-communi-verse:/usr/src/app/
+      - ./react-communi-verse:/app/frontend/
+    environment:
+      - WATCHPACK_POLLING=true
     depends_on:
       - api
   
