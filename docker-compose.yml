@@ -4,13 +4,13 @@ services:
   frontend:
     container_name: react-communi-verse
     build:
-      context: ./react-communi-verse
+      context: ../react-communi-verse
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
     volumes:
       - /app/frontend/node_modules
-      - ./react-communi-verse:/app/frontend/
+      - ../react-communi-verse:/app/frontend/
     environment:
       - WATCHPACK_POLLING=true
     depends_on:
@@ -19,13 +19,13 @@ services:
   api:
     container_name: api-communi-verse
     build: 
-      context: ./communi-verse
+      context: ../communi-verse
       dockerfile: Dockerfile
     stdin_open: true
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./communi-verse:/usr/src/app/
+      - ../communi-verse:/usr/src/app/
     ports:
       - 8000:8000
     env_file:

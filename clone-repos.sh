@@ -7,12 +7,12 @@ clone_and_switch() {
     branch_name="develop"
 
     echo "Cloning repository: $repo_url"
-    git clone "$repo_url"
+    git clone "$repo_url" ../"$repo_name"
 
     echo "Switching to the '$branch_name' branch in $repo_name"
-    cd "$repo_name" || exit
+    cd ../"$repo_name" || exit
     git checkout "$branch_name"
-    cd ..
+    cd ../communi-verse-platfrom
 }
 
 # List of repositories to clone
